@@ -22,4 +22,5 @@
     "parserOptions": {
       "project": "./tsconfig.json"
     }
+    //"eslint.workingDirectories": [ "./backend", "./backend/src" ]
   }

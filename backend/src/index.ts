@@ -1,14 +1,18 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 import express from 'express';
-import dataRouter from './routes/data';
 const app = express();
-import cors from 'cors';
-// eslint-disable-next-line @typescript-eslint/no-unsafe-call
-app.use(cors());
+require('dotenv').config();
+
+import dataRouter from './routes/data';
+
+
 app.use(express.json());
 
-const PORT = 3001;
-
 app.use('/api/data', dataRouter);
+
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
