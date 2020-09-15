@@ -1,12 +1,12 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import express from 'express';
 const app = express();
-require('dotenv').config();
+import cors from 'cors';
 
+import * as dotenv from 'dotenv';
+dotenv.config();
 import dataRouter from './routes/data';
 
+app.use(cors());
 
 app.use(express.json());
 
