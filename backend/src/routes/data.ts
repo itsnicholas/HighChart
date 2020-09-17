@@ -1,15 +1,15 @@
 import express from 'express';
 import axios from 'axios';
 
-import { DataEntry } from '../types';
+import { TimeSeriesResponseFormat } from '../types';
 
 const router = express.Router();
 
 router.get('/', (_req, res) => {
-  const token = process.env.FINNHUB_TOKEN as string;
-  const url = `https://finnhub.io/api/v1/stock/candle?symbol=AAPL&resolution=1&from=1572651390&to=1572910590&token=${token}`;
+  const token = process.env.ALPHAVANTAGE_TOKEN as string;
+  const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=AAPL&outputsize=compact&apikey=${token}`;
   
-  axios.get<DataEntry>(url)
+  axios.get<TimeSeriesResponseFormat>(url)
     .then(response => {
       console.log(response.data,'response.data in index.ts');
       res.send(response.data);
