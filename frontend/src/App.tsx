@@ -7,7 +7,7 @@ import HighchartsReact from 'highcharts-react-official';
 import { TimeSeriesResponseFormat } from "./types";
 
 // Backend url
-const baseUrl = 'http://localhost:3001/api/data';
+const baseUrl = '/api/data';
 
 const App: React.FC = () => {
   const [stocks, setStocks] = useState<TimeSeriesResponseFormat>();

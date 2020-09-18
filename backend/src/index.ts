@@ -12,6 +12,8 @@ app.use(cors());
 // Specify middleware function
 app.use(express.json());
 
+app.use(express.static('build'));
+
 // Specify middleware as the callback function
 app.use('/api/data', dataRouter);
 
