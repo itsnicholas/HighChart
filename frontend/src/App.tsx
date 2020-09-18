@@ -33,13 +33,13 @@ const App: React.FC = () => {
   // If 'stocks' is not undefined return chart
   if (stocks !== undefined) {
 
-    // Reverse array of object's own enumerable property names
+    // Reversed array of object's own enumerable property names
     const dates: string[] = 
       Object
         .keys(stocks["Time Series (Daily)"])
         .reverse();
 
-    // Reverse array of object's own enumerable property values
+    // Reversed array of object's own enumerable property values
     // populated by "4. close" element as Number data type
     const prices: number[] = 
       Object
@@ -48,14 +48,14 @@ const App: React.FC = () => {
         .map(x => x["4. close"])
         .map(Number);
     
-    // Create empty array to supply chart data   
+    // Create empty array to supply chart data to  
     var data: Array<[string, number]>= [];
 
-  /**
-   * Combine arrays into a suitable form for Highchart
-   * and take in account AAPL stock split on a 4-for-1 
-   * basis on August 28, 2020
-  */
+    /**
+     * For-loop: combine arrays into a suitable form for
+     * Highchart and take in account AAPL stock split on 
+     * a 4-for-1 basis on August 28, 2020
+    */
     // Loop through all (100) entries of 'dates' and 'prices'
     for (var i = 0; i < 100; i++) {
 
