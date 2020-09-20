@@ -18,7 +18,7 @@ app.use(express.static('build'));
 app.use('/api/data', dataRouter);
 
 // Specify environment variable PORT
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 80;
 
 // Bind and listen for connections on specified port
 app.listen(PORT, () => {

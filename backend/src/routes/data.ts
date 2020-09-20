@@ -8,7 +8,7 @@ import { TimeSeriesResponseFormat } from '../types';
 
 router.get('/', (_req, res) => {
   // Alpha Vantage apikey/token
-  const token = process.env.ALPHAVANTAGE_TOKEN as string;
+  const token = process.env.ALPHAVANTAGE_TOKEN;
   // Alpha Vantage API request url and 'token'
   const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=AAPL&outputsize=compact&apikey=${token}`;
   
