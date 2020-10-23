@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Highcharts from 'highcharts';
-import HighchartsReact from 'highcharts-react-official';
 
 // Import types
 import { TimeSeriesResponseFormat } from "./types";
+import Chart from "./components/Chart";
 
 // Backend url
 const baseUrl = '/api/data';
@@ -72,46 +71,10 @@ const App: React.FC = () => {
     console.log(prices, 'info in App.tsx');
     console.log(data, 'data in App.tsx');
 
-    // Highchart chart setup options
-    const options = {
-      chart: {
-        type: 'line'
-      },
-      title: {
-        text: 'Apple Inc.'
-      },
-      subtitle: {
-        text: '(NASDAQ: AAPL): 100 days'
-      },
-      plotOptions: {
-        series: {
-          marker: {
-            enabled: false
-          }
-        }
-      },
-      yAxis: {
-        title: {
-          text: 'Price USD',
-        },
-      },
-      xAxis: {
-        labels: {
-          enabled: false
-        },
-      },
-      series: [
-        { 
-          name: 'Price USD',
-          data: data
-        }
-      ]
-    };
-
-    // Return highchart chart
+    // Return chart
     return (
       <div>
-        <HighchartsReact highcharts={Highcharts} options={options} />
+        <Chart data={data} />
       </div>
     );
 
