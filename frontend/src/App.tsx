@@ -1,32 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 
 // Import types
 import { TimeSeriesResponseFormat } from "./types";
+import * as DataAPI from './api/DataAPI'
 import Chart from "./components/Chart";
 
-// Backend url
-const baseUrl = '/api/data';
 
 const App: React.FC = () => {
   const [stocks, setStocks] = useState<TimeSeriesResponseFormat>();
 
   // Perform GET request to backend after render
-  useEffect(() => {
+  React.useEffect(() => {
     console.log('effect');
-    axios
-      .get<TimeSeriesResponseFormat>(baseUrl)
-      .then(response => {
-        // Handle success
-        console.log('promise fulfilled');
-        console.log(response.data, 'response.data');
-        // Add response data to 'stocks'
-        setStocks(response.data);
-      })
-      .catch(error => {
-        // Handle error
-        console.log(error);
-      });
+    DataAPI.onData(setStocks);
   }, []);
 
   // If 'stocks' is not undefined return chart
