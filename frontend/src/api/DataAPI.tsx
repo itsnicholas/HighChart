@@ -1,18 +1,17 @@
 import { Dispatch } from 'react';
 import axios from 'axios';
 
-import { TimeSeriesResponseFormat } from "../types";
 
-
-export const onData = (setStocks: Dispatch<TimeSeriesResponseFormat>) => {
+export const onData = (setData: Dispatch<Array<[string, number]>>) => {
   // Backend url
   const baseUrl = '/api/data';
+  // GET request to backend
   return axios
-    .get<TimeSeriesResponseFormat>(baseUrl)
+    .get<Array<[string, number]>>(baseUrl)
     // Handle success
-    // Add response data to 'stocks'
+    // Add response data to 'data'
     .then(response => 
-      setStocks(response.data))
+      setData(response.data))
     // Handle error
     .catch(error => {
       throw error;

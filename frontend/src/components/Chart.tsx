@@ -3,7 +3,7 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
 interface Props {
-  data: [string, number][];
+  data: Array<[string, number]>;
 }
 
 const Chart: React.FC<Props> = ({ data })  => {
