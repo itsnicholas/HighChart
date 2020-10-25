@@ -41,25 +41,18 @@ const updateData = async (): Promise<Array<[string, number]> | undefined> => {
         .map(x => x["4. close"])
         .map(Number);
 
-    // Create empty array to supply chart data to  
-    var data: Array<[string, number]>= [];
-
     /**
-     * For-loop: combine arrays into a suitable form for
+     * Map function: combine arrays into a suitable form for
      * Highchart and take in account AAPL stock split on 
      * a 4-for-1 basis on August 28, 2020
     */
-    // Loop through all (100) entries of 'dates' and 'prices'
-    for (var i = 0; i < 100; i++) {
-
+    const data: Array<[string, number]> = dates.map((date, i) => {
       // Change prices before stock split by comparing dates
-      if (new Date(dates[i]) < new Date('2020-08-29')) {
+      if (new Date(date) < new Date('2020-08-29')) {
         prices[i] = prices[i]/4;
       }
-
-      // Push suitable format to data array
-      data.push([dates[i], prices[i]]);
-    }
+      return [date, prices[i]];
+    });
 
     console.log(data, 'data in dataService.ts');
 
