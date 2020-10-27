@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+
+##########################
+#  Setup node container
+##########################
+  server:
+    build: ./backend
+    expose:
+      - 3001
+    environment:
+      API_HOST: "http://localhost:3001/"
+      APP_SERVER_PORT: 3001
+    ports:
+      - 3001:3001
+    volumes:
+      - ./backend/src:/srv/app/highchart-backend/src
+    command: npm run dev
+
+###########################
+#  Setup client container
+###########################
+  client:
+    build: ./frontend
+    environment:
+      PORT: 3000
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend/src:/srv/app/highchart-frontend/src
+      - ./frontend/public:/srv/app/highchart-frontend/public
+    links:
+      - server
+    stdin_open: true
+    command: npm start
+    
+
