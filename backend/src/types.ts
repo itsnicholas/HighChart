@@ -14,7 +14,7 @@ export interface Stock {
   low: string,
   close: string,
   volume: string
-}[]
+}[];
 
 interface MetadataFormat {
   ["1. Information"]: string,
@@ -26,4 +26,8 @@ interface MetadataFormat {
 
 export interface TimeSeriesResponseFormat {
   [key: string]: MetadataFormat | SeriesFormat
+}
+
+export interface ErrorMessage {
+  [key: string]: string
 }

@@ -1,26 +1,14 @@
-import express from 'express';
-const app = express();
-import cors from 'cors';
+import app from './app';
+import http from 'http';
+import * as config from '../utils/config';
+import * as logger from '../utils/logger';
 
-import * as dotenv from 'dotenv';
-dotenv.config();
-import dataRouter from './routes/data';
-
-// Specify middleware function
-app.use(cors());
-
-// Specify middleware function
-app.use(express.json());
-
-app.use(express.static('build'));
-
-// Specify middleware as the callback function
-app.use('/api/data', dataRouter);
+const server = http.createServer(app);
 
 // Specify environment variable PORT
-const PORT = process.env.PORT || 3001;
+const PORT = config.PORT || 3001;
 
 // Bind and listen for connections on specified port
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+server.listen(PORT, () => {
+  logger.info(`Server running on port ${PORT}`);
 });

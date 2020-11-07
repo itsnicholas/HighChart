@@ -3,15 +3,17 @@ import React, { useState } from 'react';
 // Import components
 import * as DataAPI from './api/DataAPI'
 import Chart from "./components/Chart";
+import ErrorNotification from "./components/ErrorNotification";
 
 
 const App: React.FC = () => {
-  const [data, setData] = useState<Array<[string, number]>>();
-
+  const [ data, setData ] = useState<Array<[string, number]>>();
+  const [ message, setMessage ] = useState<string | null>(null);
+  const text: string = "Loading...";
   // Perform GET request to backend after render
   React.useEffect(() => {
     console.log('effect');
-    DataAPI.onData(setData);
+    DataAPI.onData(setData, setMessage);
   }, []);
 
   // If 'data' is not undefined return chart
@@ -20,7 +22,14 @@ const App: React.FC = () => {
     // Return chart
     return (
       <div>
-        <Chart data={data} />
+        {message ? (
+          <React.Fragment>
+            <ErrorNotification message={message} />
+            <Chart data={data} />
+          </React.Fragment>
+        ) : (
+          <Chart data={data} />
+        )}
       </div>
     );
 
@@ -28,7 +37,11 @@ const App: React.FC = () => {
   } else {
     return  (
       <div>
-        Loading...
+        {message ? (
+          <ErrorNotification message={message} />
+        ) : (
+          text
+        )}
       </div>
     );
   }
