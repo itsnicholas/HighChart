@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
+
 import axios from 'axios';
 import * as logger from '../../utils/logger';
 import { TimeSeriesResponseFormat, ErrorMessage } from '../types';
@@ -58,17 +59,21 @@ const updateData = async (): Promise<Array<[string, number]> | Error | undefined
       });
 
       return data;
-
+    // Handling error messages
     } else if (Object.keys(allData).includes("Error Message")) {
       const errors: string[] = Object.values(allData).map(String);
       throw {name: "Error", message: "Error: " + errors[0]};
+    // Handling notes
     } else if (Object.keys(allData).includes("Note")) {
       const notes: string[] = Object.values(allData).map(String);
       throw {name: "Note", message: "Note: " + notes[0]};
+    // Handling other issues
     } else {
-      throw new Error("Undefined error");
+      throw {name: "Undefined error", message: allData};
     }
   }
+  // Handling leftover issues
+  throw new Error("Undefined error");
 };
 
 export default {

@@ -4,6 +4,7 @@ interface Props {
   message: string;
 }
 
+// Displaying possible error or other message
 const ErrorNotification: React.FC<Props> = ({ message }) => {
   return (
     <div className="message" id="message">

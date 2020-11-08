@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,SACE,SAAU,CACV,kBAAqB,CACrB,cAAe,CACf,kBAAmB,CACnB,iBAAkB,CAClB,YAAa,CACb,kBACF","file":"main.e9b41477.chunk.css","sourcesContent":[".message {\n  color: red;\n  background: lightgrey;\n  font-size: 20px;\n  border-style: solid;\n  border-radius: 5px;\n  padding: 10px;\n  margin-bottom: 10px;\n}"]}

@@ -46,7 +46,7 @@ const Chart: React.FC<Props> = ({ data })  => {
 
   // Return highchart chart
   return (
-      <HighchartsReact highcharts={Highcharts} options={options} />
+    <HighchartsReact highcharts={Highcharts} options={options} />
   );
 
 };

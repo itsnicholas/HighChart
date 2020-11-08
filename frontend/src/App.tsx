@@ -10,6 +10,7 @@ const App: React.FC = () => {
   const [ data, setData ] = useState<Array<[string, number]>>();
   const [ message, setMessage ] = useState<string | null>(null);
   const text: string = "Loading...";
+
   // Perform GET request to backend after render
   React.useEffect(() => {
     console.log('effect');
@@ -19,21 +20,18 @@ const App: React.FC = () => {
   // If 'data' is not undefined return chart
   if (data !== undefined) {
 
-    // Return chart
+    // Return chart or error message
     return (
       <div>
         {message ? (
-          <React.Fragment>
-            <ErrorNotification message={message} />
-            <Chart data={data} />
-          </React.Fragment>
+          <ErrorNotification message={message} />
         ) : (
           <Chart data={data} />
         )}
       </div>
     );
 
-  // If 'data' is undefined return "Loading..." screen
+  // If 'data' is undefined return "Loading..." or error message
   } else {
     return  (
       <div>
