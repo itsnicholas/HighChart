@@ -73,7 +73,7 @@ const updateData = async (): Promise<Array<[string, number]> | Error | undefined
     }
   }
   // Handling leftover issues
-  throw new Error("Undefined error");
+  throw {name: "Undefined error", message: "Undefined error"};
 };
 
 export default {
