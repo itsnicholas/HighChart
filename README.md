@@ -10,6 +10,6 @@ To run the program, go to the root of the project and build it with ``` docker-c
 After this the program can be accessed at http://localhost:3000
 The backend API data can be accesses at http://localhost:3001/api/data 
 
-The project can be accessed at: https://afternoon-peak-54447.herokuapp.com/
+The project can be accessed at: https://shrouded-castle-95510.herokuapp.com/
 
 The project would benefit from e.g. using better documentation standards and perhaps using a library for validation of external data received by the backend.
